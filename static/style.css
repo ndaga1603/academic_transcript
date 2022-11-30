@@ -1,0 +1,14 @@
+body {
+    padding-top: 20px;
+    background-color: white;
+}
+
+.img {
+    position: absolute;
+
+}
+
+.img img {
+    max-width: 150px;
+    max-height: 150px;
+}
