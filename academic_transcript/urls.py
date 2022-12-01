@@ -1,12 +1,13 @@
 
 from django.contrib import admin
 from django.urls import path
-from transcript_app.views import HomeView
-from django.conf import settings
-from django.conf.urls.static import static
+from transcript_app.views import HomeView, SemesterView, TranscriptView
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', HomeView.as_view(), name='index'),
+    path('<int:pk>/', SemesterView.as_view(), name='semester'),
+    path('<int:pk>/', TranscriptView.as_view(), name='transcript'),
 
-] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+] 

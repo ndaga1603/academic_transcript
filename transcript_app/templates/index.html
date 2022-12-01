@@ -9,80 +9,48 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="{% static 'style.css' %}">
-    <title>Hello, world!</title>
+    <title>Sudent Lists</title>
   </head>
   <body>
-   
-    {% for result in results %}
-        
+           
+    <center>
+        <h2>DAR ES SALAAM INSTITUTE OF TECHNOLOGY (DIT)</h2>
+        <br><br>
+        <h3>GRADUATED STUDENTS</h3>
+    </center>
+
         <div class="container-fluid">
-            <div class="img">
-                <img src="{% static '\images\dit.png' %}" alt="dit logo" class="img-thumbnail">
-            </div>
-            <center>
-                <h2>DAR ES SALAAM INSTITUTE OF TECHNOLOGY (DIT)</h2>
-                <br><br>
-                <h3>ACADEMIC TRANSCRIPT</h3>
-            </center>
-
-
-        <table class="table table">
+        <table class="table table-borderless">
             <thead>
                 <tr>
                 <th scope="col">SURNAME</th>
                 <th scope="col">GIVEN NAME</th>
-                <th scope="col">BIRTHDATE</th>
-                <th scope="col">GENDER</th>
                 <th scope="col">REGISTRATION NUMBER</th>
+                <th scope="col">GENDER</th>
+                <th scope="col">COURSE</th>
+                <th scope="col">DATE OF ADMISSION</th>
+                <th scope="col">DATE OF GRADUATION</th>
+                <th scope="col">SEMESTER RESULTS</th>
+                <th scope="col">ACADEMIC TRANSCRIPT</th>
                 </tr>
             </thead>
-
+            {% for result in object_list %}
             <tbody>
                 <tr>
                 <td><b>{{ result.student.name.last_name|upper}}</b></td>
-                <td><b>{{ result.student.name.first_name|upper }} {{ result.student.name.last_name|upper }}</b></td>
-                <td><b>{{ result.student.birthdate }}</b></td>
-                <td><b>{{ result.student.gender|upper }}</b></td>
+                <td><b>{{ result.student.name.first_name|upper }}</b></td>
                 <td><b>{{ result.student.registration_number }}</b></td>
+                <td><b>{{ result.student.gender|upper }}</b></td>
+                <td><b>{{ result.student.course }}</b></td>
+                <th scope="col">{{ result.student.name.date_joined.date }}</th>
+                <th scope="col">{{ result.academic_year }}</th>
+                <th scope="col"><a href="{{ result.get_absolute_url }}">SEMESTER RESULTS</a></th>
+                <th scope="col"><a href="{{ result.get_absolute_url }}">GENERATE TRANSCRIPT</a></th>
                 </tr>
             </tbody>
-            <thead>
-                <tr>
-                <th scope="col">DATE OF ADMISSION</th>
-                <th scope="col">{{ result.student.name.date_joined.date }}</th>
-                <th scope="col">DATE OF GRADUATION</th>
-                <th scope="col"></th>
-                <th scope="col">{{ result.academic_year }}</th>
-                </tr>
-            </thead>
-            <thead>
-                <tr>
-                <th scope="col">AWARD TITLE</th>
-                <th scope="col">{{ result.student.category.name }} IN {{ result.student.course.course_name }}</th>
-                </tr>
-            </thead>            
-            <thead>
-                <tr>
-                <th scope="col">CLASSIFICATION OF AWARD</th>
-                <th scope="col">{{ gpa_classification }}</th>
-           
-                </tr>
-            </thead>            
-            <thead>
-                <tr>
-                <th scope="col">OVERALL GPA</th>
-                <th scope="col">{{ result.GPA }}</th>
-                </tr>
-            </thead>
+            {% endfor %}
         </table>
-
-        <div class="row">
-  
-            <div class="col-12"><p>NOTE: The Award title and classification is based on NTA Level {{ result.nta_level }} only.<p></div>
-            
-
-        </div>
-    {% endfor %}
+   
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
