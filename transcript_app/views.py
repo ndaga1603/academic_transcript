@@ -15,14 +15,15 @@ class SemesterView(DetailView):
 
 class TranscriptView(DetailView):
     template_name = 'transcript.html'
-
     model = Overall_result
-    # context_object_name = "result"
+   
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         gpa_object = Overall_result.objects.first()
         gpa_value = getattr(gpa_object, 'GPA')
+
+        # calculating award per GPA
         if gpa_value < 2:
             context['gpa_classification'] = "FAIL"
         elif gpa_value < 3.5:
@@ -31,5 +32,110 @@ class TranscriptView(DetailView):
             context['gpa_classification'] = "UPPER SECOND CLASS"
         else:
             context['gpa_classification'] = "UPPER FIRST CLASS"
+        
+        # calculating GPA and grade for each score
+        semester_results = Semester_Student_result.objects.first()
+        ca = getattr(semester_results, 'CA')
+        fe = getattr(semester_results, 'FE')
+        level = getattr(semester_results, 'nta_level')
+        sem_1 = Semester_Student_result.objects.filter(semester=1)
+        sem_2 = Semester_Student_result.objects.filter(semester=2)
+        for res in sem_1:
 
+            if int(res.nta_level.level) == 4:
+                context['semester_1_level_4'] = sem_1
+                print(int(res.nta_level.level))
+                
+            if int(res.nta_level.level) == 5:
+                context['semester_1_level_5'] = sem_1
+
+            if int(res.nta_level.level) == 6:
+                context['semester_1_level_6'] = sem_1
+
+            if int(res.nta_level.level) == 7:
+                context['semester_1_level_7'] = sem_1
+
+            if int(res.nta_level.level) == 8:
+                context['semester_1_level_8'] = sem_1
+
+        for res in sem_2:
+
+            if int(level.level) == 4 and sem_2:
+                context['semester_2_level_4'] = sem_2
+            
+
+            if int(level.level) == 5 and sem_2:
+                context['semester_2_level_5'] = sem_2
+
+            if int(level.level) == 6 and sem_2:
+                context['semester_2_level_6'] = sem_2
+        
+
+            if int(level.level) == 7 and sem_2:
+                context['semester_2_level_7'] = sem_2
+
+            if int(level.level) == 8 and sem_2:
+                context['semester_2_level_8'] = sem_2
+     
+        score = ca + fe
+        if int(level.level) <= 5:
+            if score >= 80:
+                context['grade'] = 'A'
+
+            if 65 <= score <= 79:
+                context['grade'] = 'B'
+
+            if 50 <= score <= 64:
+                context['grade'] = 'C'
+
+            if 40 <= score <= 49:
+                context['grade'] = 'D'
+
+            if score <= 39:
+                context['grade'] = 'F'
+
+        if int(level.level) == 6:
+            if score >= 75:
+                context['grade'] = 'A'
+
+            if 65 <= score <= 74:
+                context['grade'] = 'B+'
+
+            if 55 <= score <= 64:
+                context['grade'] = 'B'
+
+            if 45 <= score <= 54:
+                context['grade'] = 'C'
+
+            if 35 <= score <= 44:
+                context['grade'] = 'D'
+
+            if score <= 34:
+                context['grade'] = 'F'
+
+        if 7 <= int(level.level) <= 8:
+
+            if score >= 70:
+                context['grade'] = 'A'
+
+            if 60 <= score <= 69:
+                context['grade'] = 'B+'
+
+            if 50 <= score <= 59:
+                context['grade'] = 'B'
+
+            if 40 <= score <= 49:
+                context['grade'] = 'C'
+
+            if 30 <= score <= 39:
+                context['grade'] = 'D'
+
+            if score <= 30:
+                context['grade'] = 'F'
+
+
+        context['semester_results'] = Semester_Student_result.objects.all()
         return context
+
+  
+    

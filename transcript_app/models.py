@@ -35,7 +35,6 @@ class Category(models.Model):
         return self.name
 
 
-
 class Student(models.Model):
     GENDER = (
         ('male', 'male'),
@@ -82,7 +81,6 @@ class NTA_Level(models.Model):
         return self.level
 
 
-
 class Class(models.Model):
     class_id = models.CharField(primary_key=True, max_length=20)
     class_name = models.CharField(max_length=50)
@@ -93,7 +91,6 @@ class Class(models.Model):
     def __str__(self) -> str:
         return self.class_name
 
-    
 class Module(models.Model):
     module_code = models.CharField(primary_key=True, max_length=20)
     module_name = models.CharField(max_length=50)
@@ -134,18 +131,17 @@ class Semester_Student_result(models.Model):
     student = models.ForeignKey(Student, verbose_name="student name", on_delete=models.CASCADE)
     nta_level = models.ForeignKey(NTA_Level, verbose_name="NTA Level", on_delete=models.CASCADE)
     academic_year = models.CharField(max_length=10)
-    semister = models.CharField(max_length=1, choices=SEMESTER)
+    semester = models.CharField(max_length=1, choices=SEMESTER)
     module_code = models.ForeignKey(Module, on_delete=models.CASCADE)
     CA = models.FloatField()
     FE = models.FloatField()
     status = models.CharField(max_length=5, choices=STATUS)
     
     def __str__(self) -> str:
-        return f"{self.student}  {self.academic_year} {self.semister}"
+        return f"{self.student}  {self.academic_year} {self.semester}"
 
     def get_absolute_url(self):
         return reverse("semester", kwargs={"pk": self.id})
-
 
 
 class Overall_result(models.Model):

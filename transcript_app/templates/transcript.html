@@ -16,6 +16,319 @@
     
         
         <div class="container-fluid">
+          
+            <ul class="list-inline">
+            <li class="list-inline-item"><h4>NAME: {{ object.student.name.first_name|upper }} {{ object.student.name.last_name|upper }}</h4></li>
+            <li class="list-inline-item"> <h4>REGISTRATION NUMBER: {{ object.student.registration_number }}</h4></li>
+            <li class="list-inline-item"><h4>{{ object.student.category.name|upper }} IN {{ object.student.course.course_name|upper }}</h4></li></li>
+            </ul>
+              <div class="container">
+                   
+                        <div class="row">
+                            {% for result in semester_results %}
+                            {% if object.student.name == result.student.name %}
+                            {% if forloop.first %}
+                                
+                            {% if semester_1_level_4 %}
+                            {{ result.student.name }}
+
+                            <div class="col-12">
+                                <ul class="list-inline">
+                                    <li class="list-inline-item"><h6>NTA LEVEL 4</h6></li>
+                                    <li class="list-inline-item"> <h6>SEMESTER 1</h6></li>                                 
+                                </ul>
+                            <table class="table table-borderless">
+                                <thead>
+                                    <tr>
+                                    <th scope="col">CODE</th>
+                                    <th scope="col">MODULE NAME</th>
+                                    <th scope="col">GRADE</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+                                    {% for res in semester_1_level_4 %}
+                                        <tr>                                  
+                                        <td><b>{{ res.module_code.module_code|upper}}</b></td>
+                                        <td><b>{{ res.module_code.module_name|upper }}</b></td>
+                                        <td><b>{{ grade }}</b></td>
+                                        </tr>
+                                    {% endfor %}
+
+                                </tbody>
+                            </table>
+                            </div>
+                            {% endif %}
+
+                            {% if semester_2_level_4 %}
+                             <div class="col-12">
+                                <ul class="list-inline">
+                                    <li class="list-inline-item"><h6>NTA LEVEL 4</h6></li>
+                                    <li class="list-inline-item"> <h6>SEMESTER 2</h6></li>                                 
+                                </ul>
+                            <table class="table table-borderless">
+                                <thead>
+                                    <tr>
+                                    <th scope="col">CODE</th>
+                                    <th scope="col">MODULE NAME</th>
+                                    <th scope="col">GRADE</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+                                    {% for res in semester_2_level_4 %}
+                                        <tr>                                  
+                                        <td><b>{{ res.module_code.module_code|upper}}</b></td>
+                                        <td><b>{{ res.module_code.module_name|upper }}</b></td>
+                                        <td><b>{{ grade }}</b></td>
+                                        </tr>
+                                    {% endfor %}
+
+                                </tbody>
+                            </table>
+                            </div>
+                            {% endif %}
+
+                            {% if semester_1_level_5 %}
+                             <div class="col-12">
+                                <ul class="list-inline">
+                                    <li class="list-inline-item"><h6>NTA LEVEL 5</h6></li>
+                                    <li class="list-inline-item"> <h6>SEMESTER 1</h6></li>                                 
+                                </ul>
+                            <table class="table table-borderless">
+                                <thead>
+                                    <tr>
+                                    <th scope="col">CODE</th>
+                                    <th scope="col">MODULE NAME</th>
+                                    <th scope="col">GRADE</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+                                    {% for res in semester_1_level_5 %}
+                                        <tr>                                  
+                                        <td><b>{{ res.module_code.module_code|upper}}</b></td>
+                                        <td><b>{{ res.module_code.module_name|upper }}</b></td>
+                                        <td><b>{{ grade }}</b></td>
+                                        </tr>
+                                    {% endfor %}
+
+                                </tbody>
+                            </table>
+                            </div>
+                            {% endif %}
+
+                            {% if semester_2_level_5 %}
+                             <div class="col-12">
+                                <ul class="list-inline">
+                                    <li class="list-inline-item"><h6>NTA LEVEL 5</h6></li>
+                                    <li class="list-inline-item"> <h6>SEMESTER 2</h6></li>                                 
+                                </ul>
+                            <table class="table table-borderless">
+                                <thead>
+                                    <tr>
+                                    <th scope="col">CODE</th>
+                                    <th scope="col">MODULE NAME</th>
+                                    <th scope="col">GRADE</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+                                    {% for res in semester_2_level_5 %}
+                                        <tr>                                  
+                                        <td><b>{{ res.module_code.module_code|upper}}</b></td>
+                                        <td><b>{{ res.module_code.module_name|upper }}</b></td>
+                                        <td><b>{{ grade }}</b></td>
+                                        </tr>
+                                    {% endfor %}
+
+                                </tbody>
+                            </table>
+                            </div>
+                            {% endif %}
+
+                        {% if semester_1_level_6 %}
+                             <div class="col-12">
+                                <ul class="list-inline">
+                                    <li class="list-inline-item"><h6>NTA LEVEL 6</h6></li>
+                                    <li class="list-inline-item"> <h6>SEMESTER 1</h6></li>                                 
+                                </ul>
+                            <table class="table table-borderless">
+                                <thead>
+                                    <tr>
+                                    <th scope="col">CODE</th>
+                                    <th scope="col">MODULE NAME</th>
+                                    <th scope="col">GRADE</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+                                    {% for res in semester_1_level_6 %}
+                                        <tr>                                  
+                                        <td><b>{{ res.module_code.module_code|upper}}</b></td>
+                                        <td><b>{{ res.module_code.module_name|upper }}</b></td>
+                                        <td><b>{{ grade }}</b></td>
+                                        </tr>
+                                    {% endfor %}
+
+                                </tbody>
+                            </table>
+                            </div>
+                            {% endif %}
+
+                         {% if semester_2_level_6 %}
+                            <div class="col-12">
+                                <ul class="list-inline">
+                                    <li class="list-inline-item"><h6>NTA LEVEL 6</h6></li>
+                                    <li class="list-inline-item"> <h6>SEMESTER 2</h6></li>                                 
+                                </ul>
+                            <table class="table table-borderless">
+                                <thead>
+                                    <tr>
+                                    <th scope="col">CODE</th>
+                                    <th scope="col">MODULE NAME</th>
+                                    <th scope="col">GRADE</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+                                    {% for res in semester_2_level_6 %}
+                                        <tr>                                  
+                                        <td><b>{{ res.module_code.module_code|upper}}</b></td>
+                                        <td><b>{{ res.module_code.module_name|upper }}</b></td>
+                                        <td><b>{{ grade }}</b></td>
+                                        </tr>
+                                    {% endfor %}
+
+                                </tbody>
+                            </table>
+                            </div>
+                            {% endif %} 
+
+                            {% if semester_1_level_7 %}
+                             <div class="col-12">
+                                <ul class="list-inline">
+                                    <li class="list-inline-item"><h6>NTA LEVEL 7</h6></li>
+                                    <li class="list-inline-item"> <h6>SEMESTER 1</h6></li>                                 
+                                </ul>
+                            <table class="table table-borderless">
+                                <thead>
+                                    <tr>
+                                    <th scope="col">CODE</th>
+                                    <th scope="col">MODULE NAME</th>
+                                    <th scope="col">GRADE</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+                                    {% for res in semester_1_level_7 %}
+                                        <tr>                                  
+                                        <td><b>{{ res.module_code.module_code|upper}}</b></td>
+                                        <td><b>{{ res.module_code.module_name|upper }}</b></td>
+                                        <td><b>{{ grade }}</b></td>
+                                        </tr>
+                                    {% endfor %}
+
+                                </tbody>
+                            </table>
+                            </div>
+                            {% endif %}
+
+                            {% if semester_2_level_7 %}
+                             <div class="col-12">
+                                <ul class="list-inline">
+                                    <li class="list-inline-item"><h6>NTA LEVEL 7</h6></li>
+                                    <li class="list-inline-item"> <h6>SEMESTER 2</h6></li>                                 
+                                </ul>
+                            <table class="table table-borderless">
+                                <thead>
+                                    <tr>
+                                    <th scope="col">CODE</th>
+                                    <th scope="col">MODULE NAME</th>
+                                    <th scope="col">GRADE</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+                                    {% for res in semester_2_level_7 %}
+                                        <tr>                                  
+                                        <td><b>{{ res.module_code.module_code|upper}}</b></td>
+                                        <td><b>{{ res.module_code.module_name|upper }}</b></td>
+                                        <td><b>{{ grade }}</b></td>
+                                        </tr>
+                                    {% endfor %}
+
+                                </tbody>
+                            </table>
+                            </div>
+                            {% endif %}
+
+                            {% if semester_1_level_8 %}
+                             <div class="col-12">
+                                <ul class="list-inline">
+                                    <li class="list-inline-item"><h6>NTA LEVEL 8</h6></li>
+                                    <li class="list-inline-item"> <h6>SEMESTER 1</h6></li>                                 
+                                </ul>
+                            <table class="table table-borderless">
+                                <thead>
+                                    <tr>
+                                    <th scope="col">CODE</th>
+                                    <th scope="col">MODULE NAME</th>
+                                    <th scope="col">GRADE</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+                                    {% for res in semester_1_level_8 %}
+                                        <tr>                                  
+                                        <td><b>{{ res.module_code.module_code|upper}}</b></td>
+                                        <td><b>{{ res.module_code.module_name|upper }}</b></td>
+                                        <td><b>{{ grade }}</b></td>
+                                        </tr>
+                                    {% endfor %}
+
+                                </tbody>
+                            </table>
+                            </div>
+                            {% endif %}
+
+                            {% if semester_2_level_8 %}
+                             <div class="col-12">
+                                <ul class="list-inline">
+                                    <li class="list-inline-item"><h6>NTA LEVEL 8</h6></li>
+                                    <li class="list-inline-item"> <h6>SEMESTER 2</h6></li>                                 
+                                </ul>
+                            <table class="table table-borderless">
+                                <thead>
+                                    <tr>
+                                    <th scope="col">CODE</th>
+                                    <th scope="col">MODULE NAME</th>
+                                    <th scope="col">GRADE</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+                                    {% for res in semester_2_level_8 %}
+                                        <tr>                                  
+                                        <td><b>{{ res.module_code.module_code|upper}}</b></td>
+                                        <td><b>{{ res.module_code.module_name|upper }}</b></td>
+                                        <td><b>{{ grade }}</b></td>
+                                        </tr>
+                                    {% endfor %}
+
+                                </tbody>
+                            </table>
+                            </div>
+                            {% endif %}
+
+                        {% endif %}
+                        {% endif %}
+                        {% endfor %}
+                        
+
+                        </div>
+                </div>
+
             <div class="img">
                 <img src="{% static '\images\dit.png' %}" alt="dit logo" class="img-thumbnail">
             </div>
