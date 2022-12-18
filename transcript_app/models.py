@@ -137,6 +137,7 @@ class Semester_Student_result(models.Model):
     FE = models.FloatField()
     status = models.CharField(max_length=5, choices=STATUS)
     
+    
     def __str__(self) -> str:
         return f"{self.student}  {self.academic_year} {self.semester}"
 

@@ -25,12 +25,15 @@
               <div class="container">
                    
                         <div class="row">
+                         
                             {% for result in semester_results %}
+                           
+
                             {% if object.student.name == result.student.name %}
                             {% if forloop.first %}
                                 
                             {% if semester_1_level_4 %}
-                            {{ result.student.name }}
+                            
 
                             <div class="col-12">
                                 <ul class="list-inline">

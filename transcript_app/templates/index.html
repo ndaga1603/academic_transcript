@@ -30,7 +30,7 @@
                 <th scope="col">COURSE</th>
                 <th scope="col">DATE OF ADMISSION</th>
                 <th scope="col">DATE OF GRADUATION</th>
-                <th scope="col">SEMESTER RESULTS</th>
+            
                 <th scope="col">ACADEMIC TRANSCRIPT</th>
                 </tr>
             </thead>
@@ -44,7 +44,7 @@
                 <td><b>{{ result.student.course }}</b></td>
                 <th scope="col">{{ result.student.name.date_joined.date }}</th>
                 <th scope="col">{{ result.academic_year }}</th>
-                <th scope="col"><a href="{{ result.get_absolute_url }}">SEMESTER RESULTS</a></th>
+              
                 <th scope="col"><a href="{{ result.get_absolute_url }}">GENERATE TRANSCRIPT</a></th>
                 </tr>
             </tbody>

@@ -38,45 +38,43 @@ class TranscriptView(DetailView):
         ca = getattr(semester_results, 'CA')
         fe = getattr(semester_results, 'FE')
         level = getattr(semester_results, 'nta_level')
-        sem_1 = Semester_Student_result.objects.filter(semester=1)
-        sem_2 = Semester_Student_result.objects.filter(semester=2)
-        for res in sem_1:
-
-            if int(res.nta_level.level) == 4:
-                context['semester_1_level_4'] = sem_1
-                print(int(res.nta_level.level))
-                
-            if int(res.nta_level.level) == 5:
-                context['semester_1_level_5'] = sem_1
-
-            if int(res.nta_level.level) == 6:
-                context['semester_1_level_6'] = sem_1
-
-            if int(res.nta_level.level) == 7:
-                context['semester_1_level_7'] = sem_1
-
-            if int(res.nta_level.level) == 8:
-                context['semester_1_level_8'] = sem_1
-
-        for res in sem_2:
-
-            if int(level.level) == 4 and sem_2:
-                context['semester_2_level_4'] = sem_2
-            
-
-            if int(level.level) == 5 and sem_2:
-                context['semester_2_level_5'] = sem_2
-
-            if int(level.level) == 6 and sem_2:
-                context['semester_2_level_6'] = sem_2
-        
-
-            if int(level.level) == 7 and sem_2:
-                context['semester_2_level_7'] = sem_2
-
-            if int(level.level) == 8 and sem_2:
-                context['semester_2_level_8'] = sem_2
+    
      
+        sem_1_level_4 = Semester_Student_result.objects.filter(
+                semester=1, nta_level__level=4)
+        sem_1_level_5 = Semester_Student_result.objects.filter(
+            semester=1, nta_level__level=5)
+        sem_1_level_6 = Semester_Student_result.objects.filter(
+            semester=1, nta_level__level=6)
+        sem_1_level_7 = Semester_Student_result.objects.filter(
+            semester=1, nta_level__level=7)
+        sem_1_level_8 = Semester_Student_result.objects.filter(
+            semester=1, nta_level__level=8)
+
+        sem_2_level_4 = Semester_Student_result.objects.filter(
+            semester=2, nta_level__level=4)
+        sem_2_level_5 = Semester_Student_result.objects.filter(
+            semester=2, nta_level__level=5)
+        sem_2_level_6 = Semester_Student_result.objects.filter(
+            semester=2, nta_level__level=6)
+        sem_2_level_7 = Semester_Student_result.objects.filter(
+            semester=2, nta_level__level=7)
+        sem_2_level_8 = Semester_Student_result.objects.filter(
+            semester=2, nta_level__level=8)
+
+
+        context['semester_1_level_4'] = sem_1_level_4
+        context['semester_1_level_5'] = sem_1_level_5
+        context['semester_1_level_6'] = sem_1_level_6
+        context['semester_1_level_7'] = sem_1_level_7
+        context['semester_1_level_8'] = sem_1_level_8
+
+        context['semester_2_level_4'] = sem_2_level_4
+        context['semester_2_level_5'] = sem_2_level_5
+        context['semester_2_level_6'] = sem_2_level_6
+        context['semester_2_level_7'] = sem_2_level_7
+        context['semester_2_level_8'] = sem_2_level_8
+
         score = ca + fe
         if int(level.level) <= 5:
             if score >= 80:
