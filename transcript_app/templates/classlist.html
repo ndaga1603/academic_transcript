@@ -1,0 +1,52 @@
+
+{% extends 'base.html' %}
+{% load static %}
+{% block main-content %}
+    <section class="section register min-vh-100 d-flex flex-column align-items-center justify-content-center py-4">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-12">
+                    <div class="card top-selling overflow-auto">
+                        <div class="card-body pb-0">
+                            <h5 class="card-title">DIT classes</h5>
+                            <table class="table table-borderless datatable">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Class ID</th>
+                                        <th scope="col">Class Name</th>
+                                        <th scope="col">Program</th>
+                                        <th scope="col">Starting Year</th>
+                                        <th scope="col">Results</th>
+
+                                    
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for class in object_list %}
+                                        <tr>
+                                            <td>{{ class.class_id }}</td>
+                                            <td>{{ class.class_name }}</td>
+                                            <td>{{ class.program }}</td>
+                                            <td>{{ class.starting_year }}</td>
+                                            <td>
+                                                <a href="">
+                                                    <button type="button" class="btn btn-outline-success btn-sm">
+                                                        <i class="bi bi-printer"></i>
+                                                    </button>
+                                                </a>
+                                              
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+</main>
+<!-- End #main -->
+{% endblock main-content %}

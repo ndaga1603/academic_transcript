@@ -1,0 +1,54 @@
+
+{% extends 'base.html' %}
+{% load static %}
+{% block main-content %}
+    <section class="section register min-vh-100 d-flex flex-column align-items-center justify-content-center py-4">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-12">
+                    <div class="card top-selling overflow-auto">
+                        <div class="card-body pb-0">
+                            <h5 class="card-title">Modules</h5>
+                            <table class="table table-borderless datatable">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Module Code</th>
+                                        <th scope="col">Module Name</th>
+                                        <th scope="col">Departiment</th>
+                                        <th scope="col">Credit</th>
+                                        {% comment %} <th scope="col">Action</th> {% endcomment %}
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for module in object_list %}
+                                        <tr>
+                                            <td>{{ module.module_code }}</td>
+                                            <td>{{ module.module_name }}</td>
+                                            <td scope="row">{{ module.departiment }}</td>
+                                            <td scope="row">{{ module.module_credit }}</td>
+                                            <td>
+                                                {% comment %} <a href="">
+                                                    <button type="button" class="btn btn-outline-success btn-sm">
+                                                        <i class="bi bi-pencil"></i>
+                                                    </button>
+                                                </a>
+                                                <a href="">
+                                                    <button type="button" class="btn btn-outline-danger btn-sm">
+                                                        <i class="bi bi-trash"></i>
+                                                    </button>
+                                                </a> {% endcomment %}
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+</main>
+<!-- End #main -->
+{% endblock main-content %}

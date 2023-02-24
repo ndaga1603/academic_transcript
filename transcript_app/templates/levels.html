@@ -1,0 +1,54 @@
+
+{% extends 'base.html' %}
+{% load static %}
+{% block main-content %}
+    <section class="section register min-vh-100 d-flex flex-column align-items-center justify-content-center py-4">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-12">
+                    <div class="card top-selling overflow-auto">
+                        <div class="card-body pb-0">
+                            <h5 class="card-title">NTA Levels</h5>
+                            <table class="table table-borderless datatable">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">ID</th>
+                                        <th scope="col">Name</th>
+                                        <th scope="col">Number of Semesters</th>
+                            
+                                        <th scope="col">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for level in object_list %}
+                                        <tr>
+                                            <td>{{ level.level_id }}</td>
+                                            <td>{{ level.get_level_display }}</td>
+                                            <td>{{ level.number_of_semesters }}</td>
+                                      
+                                            <td>
+                                                {% comment %} <a href="{% url 'edituser' level.level_id %}">
+                                                    <button type="button" class="btn btn-outline-success btn-sm">
+                                                        <i class="bi bi-pencil"></i>
+                                                    </button>
+                                                </a>
+                                                <a href="{% url 'deleteuser' level.level_id %}">
+                                                    <button type="button" class="btn btn-outline-danger btn-sm">
+                                                        <i class="bi bi-trash"></i>
+                                                    </button>
+                                                </a> {% endcomment %}
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+</main>
+<!-- End #main -->
+{% endblock main-content %}

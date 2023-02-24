@@ -1,0 +1,103 @@
+
+{% extends 'base.html' %}
+{% load static %}
+{% block main-content %}
+    <section class="section register min-vh-100 d-flex flex-column align-items-center justify-content-center py-4">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-12">
+                    <div class="card top-selling overflow-auto">
+                        <div class="card-body pb-0">
+                            <h5 class="card-title">Programs</h5>
+                            <table class="table table-borderless datatable">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Program id</th>
+                                        <th scope="col">Program Name</th>
+                                        <th scope="col">Departiment</th>
+                                   
+                                        <th scope="col">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for program in object_list %}
+                                        <tr>
+                                            <td>{{ programe.program_id }}</td>
+                                            <td>{{ programe.program_name }}</td>
+                                            <td scope="row">{{ programe.department }}</td>
+                                           
+                                            <td>
+                                                <a href="{% url 'edituser' programe.id %}">
+                                                    <button type="button" class="btn btn-outline-success btn-sm">
+                                                        <i class="bi bi-pencil"></i>
+                                                    </button>
+                                                </a>
+                                                <a href="{% url 'deleteuser' programe.id %}">
+                                                    <button type="button" class="btn btn-outline-danger btn-sm">
+                                                        <i class="bi bi-trash"></i>
+                                                    </button>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row justify-content-center">
+                <div class="col-12">
+                    <div class="card top-selling overflow-auto">
+                        <div class="card-body pb-0">
+                            <h5 class="card-title">Classes</h5>
+                            <table class="table table-borderless datatable">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Class id</th>
+                                        <th scope="col">Class Name</th>
+                                        <th scope="col">Program</th>
+                                        <th scope="col">Level</th>
+                                        <th scope="col">Staring Year</th>
+
+                                        <th scope="col">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for class in classes %}
+                                        <tr>
+                                            <td>{{ class.class_id }}</td>
+                                            <td>{{ class.class_name }}</td>
+                                            <td scope="row">{{ class.program }}</td>
+                                            <td>{{ class.nta_level }}</td>
+                                            <td>{{ class.starting_year }}</td>
+
+                                           
+                                            <td>
+                                                <a href="{% url 'edituser' programe.id %}">
+                                                    <button type="button" class="btn btn-outline-success btn-sm">
+                                                        <i class="bi bi-pencil"></i>
+                                                    </button>
+                                                </a>
+                                                <a href="{% url 'deleteuser' programe.id %}">
+                                                    <button type="button" class="btn btn-outline-danger btn-sm">
+                                                        <i class="bi bi-trash"></i>
+                                                    </button>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+</div>
+</main>
+<!-- End #main -->
+{% endblock main-content %}

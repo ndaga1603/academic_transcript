@@ -1,0 +1,61 @@
+
+{% extends 'base.html' %}
+{% load static %}
+{% block main-content %}
+    <section class="section register min-vh-100 d-flex flex-column align-items-center justify-content-center py-4">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-12">
+                    <div class="card top-selling overflow-auto">
+                        <div class="card-body pb-0">
+                            <h5 class="card-title">Students</h5>
+                            <table class="table table-borderless datatable">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">First Name</th>
+                                        <th scope="col">Middle Name</th>
+                                        <th scope="col">Last Name</th>
+                                        <th scope="col">Registration Number</th>
+                                        <th scope="col">Program</th>
+                                        <th scope="col">Email Address</th>
+                       
+                                        <th scope="col">Date of Birth</th>
+                                        <th scope="col">Gender</th>    
+                                        <th scope="col">Results</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for student in object_list %}
+                                        <tr>
+                                            <td>{{ student.first_name }}</td>
+                                            <td>{{ student.middle_name }}</td>
+                                            <td>{{ student.last_name }}</td>
+                                            
+                                            <td scope="row">{{ student.registration_number }}</td>
+                                            <td>{{ student.program }}</td>
+                                            <td>{{ student.email }}</td>
+                                   
+                                            <td>{{ student.birthdate }}</td>
+                                            <td>{{ student.gender }}</td>
+                                            <td>
+                                                <a href="{% url 'results' student.registration_number %}">
+                                                    <button type="button" class="btn btn-outline-success btn-sm">
+                                                        <i class="bi bi-printer"></i>
+                                                    </button>
+                                                </a>
+                                              
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+</main>
+<!-- End #main -->
+{% endblock main-content %}

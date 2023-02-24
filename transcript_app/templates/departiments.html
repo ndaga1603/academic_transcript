@@ -1,0 +1,53 @@
+
+{% extends 'base.html' %}
+{% load static %}
+{% block main-content %}
+    <section class="section register min-vh-100 d-flex flex-column align-items-center justify-content-center py-4">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-12">
+                    <div class="card top-selling overflow-auto">
+                        <div class="card-body pb-0">
+                            <h5 class="card-title">All Departiments</h5>
+                            <table class="table table-borderless datatable">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Departiment id</th>
+                                        <th scope="col">Departiment Name</th>
+                                        <th scope="col">Head of Departiment</th>
+                                        <th scope="col">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for departiment in object_list %}
+                                        <tr>
+                                            <td>{{ departiment.department_id }}</td>
+                                            <td>{{ departiment.department_name }}</td>
+                                            <td>{{ departiment.hod }}</td>
+
+                                            <td>
+                                                <a href="{% url 'edituser' departiment.id %}">
+                                                    <button type="button" class="btn btn-outline-success btn-sm">
+                                                        <i class="bi bi-pencil"></i>
+                                                    </button>
+                                                </a>
+                                                <a href="{% url 'deleteuser' departiment.id %}">
+                                                    <button type="button" class="btn btn-outline-danger btn-sm">
+                                                        <i class="bi bi-trash"></i>
+                                                    </button>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+<!-- End #main -->
+{% endblock main-content %}

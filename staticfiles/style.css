@@ -3,10 +3,10 @@ body {
     background-color: white;
 }
 
-/* .img {
+.img {
     position: absolute;
 
-} */
+}
 
 .img img {
     max-width: 150px;

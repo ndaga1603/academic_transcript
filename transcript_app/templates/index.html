@@ -1,62 +1,422 @@
+<!DOCTYPE html>
 {% load static %}
-<!doctype html>
 <html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <head>
+        <meta charset="utf-8">
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+        <title>Student Academic Transcript Portal</title>
+        <meta content="" name="description">
+        <meta content="" name="keywords">
+        <!-- Favicons -->
+        <link href="{% static 'assets/img/favicon.png' %}" rel="icon">
+        <link href="{% static 'assets/img/apple-touch-icon.png' %}" rel="apple-touch-icon">
+        <!-- Google Fonts -->
+        <link href="https://fonts.gstatic.com" rel="preconnect">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+              rel="stylesheet">
+        <!-- Vendor CSS Files -->
+        <link href="{% static 'assets/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+        <link href="{% static 'assets/vendor/bootstrap-icons/bootstrap-icons.css' %}"
+              rel="stylesheet">
+        <link href="{% static 'assets/vendor/boxicons/css/boxicons.min.css' %}" rel="stylesheet">
+        <link href="{% static 'assets/vendor/quill/quill.snow.css' %}" rel="stylesheet"> -->
+        <link href="{% static 'assets/vendor/quill/quill.bubble.css' %}" rel="stylesheet">
+        <link href="{% static 'assets/vendor/remixicon/remixicon.css' %}" rel="stylesheet">
+        <link href="{% static 'assets/vendor/simple-datatables/style.css' %}" rel="stylesheet">
+        <!-- Template Main CSS File -->
+        <link href="{% static 'assets/css/style.css' %}" rel="stylesheet">
+    </head>
+    <body>
+       <!-- ======= Header ======= -->
+  <header id="header" class="header fixed-top d-flex align-items-center">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="{% static 'style.css' %}">
-    <title>Sudent Lists</title>
-  </head>
-  <body>
+    <div class="d-flex align-items-center justify-content-between">
+      <a href="{% url 'index' %}" class="logo d-flex align-items-center">
+        <img src="" alt="">
+        <span class="d-none d-lg-block">SATP</span>
+      </a>
+      <i class="bi bi-list toggle-sidebar-btn"></i>
+    </div><!-- End Logo -->
+
+
+
+    <nav class="header-nav ms-auto">
+      <ul class="d-flex align-items-center">
+
+
+        <li class="nav-item dropdown pe-3">
+
+          <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
+
+             <span class="d-none d-md-block dropdown-toggle ps-2">{{ user.username }}</span>
+              </a><!-- End Profile Iamge Icon -->
+              <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
+                <li class="dropdown-header">
+                  <h6>{{ user.first_name }} {{ user.last_name }}</h6>
+              <span>Staff Member</span>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            {% comment %} <li>
+              <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
+                <i class="bi bi-gear"></i>
+                <span>Account Settings</span>
+              </a>
+            </li> {% endcomment %}
+            {% comment %} <li>
+              <hr class="dropdown-divider">
+            </li> {% endcomment %}
+
+            {% comment %} <li>
+              <a class="dropdown-item d-flex align-items-center" href="pages-faq.html">
+                <i class="bi bi-question-circle"></i>
+                <span>Need Help?</span>
+              </a>
+            </li> {% endcomment %}
+            {% comment %} <li>
+              <hr class="dropdown-divider">
+            </li> {% endcomment %}
+
+            <li>
+              <a class="dropdown-item d-flex align-items-center" href="{% url 'logout' %}">
+                <i class="bi bi-box-arrow-right"></i>
+                <span>Sign Out</span>
+              </a>
+            </li>
+
+          </ul><!-- End Profile Dropdown Items -->
+        </li><!-- End Profile Nav -->
+
+      </ul>
+    </nav><!-- End Icons Navigation -->
+
+  </header><!-- End Header -->
+
+            <!-- ======= Sidebar ======= -->
+        <aside id="sidebar" class="sidebar">
+                <ul class="sidebar-nav" id="sidebar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link " href="{% url 'index' %}">
+                            <i class="bi bi-grid"></i>
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+                    <!-- End Dashboard Nav -->
+                    <li class="nav-item">
+                        <a class="nav-link collapsed" href="">
+                            <i class="bi bi-grid"></i>
+                            <span>Add Module To Class</span>
+                        </a>
+                    </li>  <li class="nav-item">
+                        <a class="nav-link collapsed" href="{% url 'module-list' %}">
+                            <i class="bi bi-grid"></i>
+                            <span>View All Module</span>
+                        </a>
+                  
            
-    <center>
-        <h2>DAR ES SALAAM INSTITUTE OF TECHNOLOGY (DIT)</h2>
-        <br><br>
-        <h3>GRADUATED STUDENTS</h3>
-    </center>
+                    <li class="nav-item">
+                        <li class="nav-item">
+                            <a class="nav-link collapsed"
+                               data-bs-target="#forms-nav"
+                               data-bs-toggle="collapse"
+                               href="#">
+                                <i class="bi bi-journal-text"></i><span>Semester Results</span><i class="bi bi-chevron-down ms-auto"></i>
+                            </a>
+                            <ul id="forms-nav"
+                                class="nav-content collapse "
+                                data-bs-parent="#sidebar-nav">
+                          
+                                <li>
+                                    <a href="{% url 'studentlist' %}">
+                                        <i class="bi bi-circle"></i><span>Student Results</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{% url 'studentlist' %}">
+                                        <i class="bi bi-circle"></i><span>Class Results</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{% url 'studentlist' %}">
+                                        <i class="bi bi-circle"></i><span>View Module Results</span>
+                                    </a>
+                                </li>
+                
+                            </ul>
+                        </li>
+                        <!-- End Fo Staff Nav -->
+                        
+                          <li class="nav-item">
+                            <a class="nav-link collapsed"
+                               data-bs-target="#charts-nav"
+                               data-bs-toggle="collapse"
+                               href="#">
+                                <i class="bi bi-bar-chart"></i><span>Overall Results</span><i class="bi bi-chevron-down ms-auto"></i>
+                            </a>
+                            <ul id="charts-nav"
+                                class="nav-content collapse "
+                                data-bs-parent="#sidebar-nav">
+                       
+                                <li>
+                                    <a href="{% url 'search' %}">
+                                        <i class="bi bi-circle"></i><span>View Student Resultts</span>
+                                    </a>
+                                </li>
+                             
+                            </ul>
+                        </li>
+                        <!-- End Assets Nav -->
+                        {% comment %} 
+                          <li class="nav-item">
+                            <a class="nav-link collapsed"
+                               data-bs-target="#course-nav"
+                               data-bs-toggle="collapse"
+                               href="#">
+                                <i class="bi bi-bar-chart"></i><span>Programs & Classes</span><i class="bi bi-chevron-down ms-auto"></i>
+                            </a>
+                            <ul id="course-nav"
+                                class="nav-content collapse "
+                                data-bs-parent="#sidebar-nav">
+                                <li>
+                                    <a href="charts-chartjs.html">
+                                        <i class="bi bi-circle"></i><span>Add New Program</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="charts-apexcharts.html">
+                                        <i class="bi bi-circle"></i><span>Add New Class</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{% url 'program-class' %}">
+                                        <i class="bi bi-circle"></i><span>All Programs & Classes</span>
+                                    </a>
+                                </li>
 
-        <div class="container-fluid">
-        <table class="table table-borderless">
-            <thead>
-                <tr>
-                <th scope="col">SURNAME</th>
-                <th scope="col">GIVEN NAME</th>
-                <th scope="col">REGISTRATION NUMBER</th>
-                <th scope="col">GENDER</th>
-                <th scope="col">COURSE</th>
-                <th scope="col">DATE OF ADMISSION</th>
-                <th scope="col">DATE OF GRADUATION</th>
-            
-                <th scope="col">ACADEMIC TRANSCRIPT</th>
-                </tr>
-            </thead>
-            {% for result in object_list %}
-            <tbody>
-                <tr>
-                <td><b>{{ result.student.name.last_name|upper}}</b></td>
-                <td><b>{{ result.student.name.first_name|upper }}</b></td>
-                <td><b>{{ result.student.registration_number }}</b></td>
-                <td><b>{{ result.student.gender|upper }}</b></td>
-                <td><b>{{ result.student.course }}</b></td>
-                <th scope="col">{{ result.student.name.date_joined.date }}</th>
-                <th scope="col">{{ result.academic_year }}</th>
+                            </ul>
+                        </li>
+                        <!-- End Assets Nav -->
+
+                          <li class="nav-item">
+                            <a class="nav-link collapsed"
+                               data-bs-target="#nta-nav"
+                               data-bs-toggle="collapse"
+                               href="#">
+                                <i class="bi bi-bar-chart"></i><span>NTA Level & Enrollment</span><i class="bi bi-chevron-down ms-auto"></i>
+                            </a>
+                            <ul id="nta-nav"
+                                class="nav-content collapse "
+                                data-bs-parent="#sidebar-nav">
+                                <li>
+                                    <a href="{% url 'levels' %}">
+                                        <i class="bi bi-circle"></i><span>NTA Level</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="charts-apexcharts.html">
+                                        <i class="bi bi-circle"></i><span>Enrollment</span>
+                                    </a>
+                                </li>
+                             
+                            </ul>
+                        </li>
+                        <!-- End Assets Nav -->
+
+                          <li class="nav-item">
+                            <a class="nav-link collapsed"
+                               data-bs-target="#module-nav"
+                               data-bs-toggle="collapse"
+                               href="#">
+                                <i class="bi bi-bar-chart"></i><span>Module Management</span><i class="bi bi-chevron-down ms-auto"></i>
+                            </a>
+                            <ul id="module-nav"
+                                class="nav-content collapse "
+                                data-bs-parent="#sidebar-nav">
+                                <li>
+                                    <a href="charts-chartjs.html">
+                                        <i class="bi bi-circle"></i><span>Register New Module</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{% url 'module-list' %}">
+                                        <i class="bi bi-circle"></i><span>All Modules</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="charts-apexcharts.html">
+                                        <i class="bi bi-circle"></i><span>Assign Module to Class</span>
+                                    </a>
+                                </li>
+                             
+                            </ul>
+                        </li>
+                        <!-- End Assets Nav -->
+
+
+                        <li class="nav-item">
+                            <a class="nav-link collapsed"
+                               data-bs-target="#hod-nav"
+                               data-bs-toggle="collapse"
+                               href="#">
+                                <i class="bi bi-bar-chart"></i><span>Departiment</span><i class="bi bi-chevron-down ms-auto"></i>
+                            </a>
+                            <ul id="hod-nav"
+                                class="nav-content collapse "
+                                data-bs-parent="#sidebar-nav">
+                                <li>
+                                    <a href="charts-chartjs.html">
+                                        <i class="bi bi-circle"></i><span>Add New Departiment</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{% url 'departiments' %}">
+                                        <i class="bi bi-circle"></i><span>All Departiments</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="charts-apexcharts.html">
+                                        <i class="bi bi-circle"></i><span>HOD</span>
+                                    </a>
+                                </li>
+                             
+                            </ul>
+                        </li>
+                        <!-- End Assets Nav --> {% endcomment %}
+                     
               
-                <th scope="col"><a href="{{ result.get_absolute_url }}">GENERATE TRANSCRIPT</a></th>
-                </tr>
-            </tbody>
-            {% endfor %}
-        </table>
-        
-      
+                    </ul>
+            </aside>
+                <!-- End Sidebar-->
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-  </body>
-</html>
+            <main id="main" class="main">
+                    <div class="pagetitle">
+                        <h1>
+                            Dashboard
+                        </h1>
+                        <nav>
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item">
+                                    <a href="index.html">Home</a>
+                                </li>
+                                <li class="breadcrumb-item active">
+                                    Dashboard
+                                </li>
+                            </ol>
+                        </nav>
+                    </div>
+                    <!-- End Page Title -->
+                    <section class="section dashboard">
+                        <div class="row">
+                            <!-- Left side columns -->
+                            <div class="col-lg-12">
+                                <div class="row">
+                                    <!-- Sales Card -->
+                                    <div class="col-xxl-4 col-md-4">
+                                        <div class="card info-card sales-card">
+                                           
+                                            <div class="card-body">
+                                                <h5 class="card-title">
+                                                    Students <span>| Registered</span>
+                                                </h5>
+                                                <div class="d-flex align-items-center">
+                                                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                                        <i class="bi bi-cart"></i>
+                                                    </div>
+                                                    <div class="ps-3">
+                                                        <h6>
+                                                            {{students}}
+                                                        </h6>
+                                                        {% comment %} <span class="text-success small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">increase</span> {% endcomment %}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- End Sales Card -->
+                                    <!-- Revenue Card -->
+                                    <div class="col-xxl-4 col-md-4">
+                                        <div class="card info-card revenue-card">
+                                           
+                                            <div class="card-body">
+                                                <h5 class="card-title">
+                                                    Programes <span>| Departiment </span>
+                                                </h5>
+                                                <div class="d-flex align-items-center">
+                                                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                                        <i class="bi bi-currency-dollar"></i>
+                                                    </div>
+                                                    <div class="ps-3">
+                                                        <h6>
+                                                            {{programs}}
+                                                        </h6>
+                                                        {% comment %} <span class="text-success small pt-1 fw-bold">8%</span> <span class="text-muted small pt-2 ps-1">increase</span> {% endcomment %}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- End Revenue Card -->
+                                    <!-- Customers Card -->
+                                    <div class="col-xxl-4 col-md-4">
+                                        <div class="card info-card customers-card">
+                                            
+                                            <div class="card-body">
+                                                <h5 class="card-title">
+                                                    Classes <span>| Departiment </span>
+                                                </h5>
+                                                <div class="d-flex align-items-center">
+                                                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                                        <i class="bi bi-people"></i>
+                                                    </div>
+                                                    <div class="ps-3">
+                                                        <h6>
+                                                            {{classes}}
+                                                        </h6>
+                                                        {% comment %} <span class="text-danger small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">decrease</span> {% endcomment %}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- End Customers Card -->
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+                        
+                </main>
+                    <!-- End #main -->
+                    <!-- ======= Footer ======= -->
+                    <footer id="footer" class="footer">
+                        <div class="copyright">
+                        &copy; Copyright <strong><span>SATP</span></strong>. All Rights Reserved
+                    </div>
+                    <div class="credits">
+                        <!-- All the links in the footer should remain intact. -->
+                        <!-- You can delete the links only if you purchased the pro version. -->
+                        <!-- Licensing information: https://bootstrapmade.com/license/ -->
+                        <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/ -->
+                        Designed by <a href="">David A. Ndaga</a>
+                    </div>
+                </footer>
+                <!-- End Footer -->
+                <a href="#"
+                   class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+                <!-- Vendor JS Files -->
+                <script src="{% static 'assets/vendor/apexcharts/apexcharts.min.js' %}"></script>
+                <script src="{% static 'assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+                <script src="{% static 'assets/vendor/chart.js/chart.min.js' %}"></script>
+                <script src="{% static 'assets/vendor/echarts/echarts.min.js' %}"></script>
+                <!-- Template Main JS File -->
+                <script src="{% static 'assets/js/main.js' %}"></script>
+            </body>
+        </html>

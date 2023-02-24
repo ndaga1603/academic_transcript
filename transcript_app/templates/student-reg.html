@@ -1,0 +1,67 @@
+
+{% extends 'base.html' %}
+{% load static %}
+{% block main-content %}
+    <section class="section register min-vh-100 d-flex flex-column align-items-center justify-content-center py-4">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-12">
+                    <div class="card top-selling overflow-auto">
+                        <div class="card-body pb-0">
+                            <h5>Student Registration</h5>
+                            <form class="row g-3">
+                                <div class="col-md-4">
+                                    <label for="inputEmail4" class="form-label">First Name</label>
+                                    <input type="text" class="form-control" name="first_name">
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="inputPassword4" class="form-label">Middle Name</label>
+                                    <input type="text" class="form-control" name="middle_name">
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="inputPassword4" class="form-label">Last Name</label>
+                                    <input type="text" class="form-control" name="last_name">
+                                </div>
+                                <div class="col-12">
+                                    <label for="inputAddress" class="form-label">Registraion Number</label>
+                                    <input type="text" class="form-control" name="registration_number">
+                                </div>
+                                <div class="col-md-12">
+                                    <label for="email" class="form-label">Email Address</label>
+                                    <input type="email" class="form-control" name="email">
+                                </div>
+                                <div class="col-md-12">
+                                    <label for="phone" class="form-label">Phone Number</label>
+                                    <input type="text" class="form-control" name="phone_number">
+                                </div>
+                                <div class="col-md-12">
+                                    <label for="bod" class="form-label">Date of Birth</label>
+                                    <input type="date" class="form-control" name="birthdate">
+                                </div>
+                                <div class="col-md-12">
+                                    <label for="gender" class="form-label">Gender</label>
+                                    <select id="gender" class="form-select" name="gender">
+                                    <option>male</option>
+                                    <option>female</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-12 ">
+                                    <label for="inputZip" class="form-label">Program</label>
+                                    <input type="text" class="form-control" name="program">
+                                </div>
+                                <center>
+                                <div class="col-12">
+                                    <button type="submit" class="btn btn-primary">Register</button>
+                                </div>
+                                </center>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+</main>
+<!-- End #main -->
+{% endblock main-content %}
